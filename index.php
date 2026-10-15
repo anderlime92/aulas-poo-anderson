@@ -5,8 +5,12 @@ require_once "src/Filme.php";
 // Criando um OBJETO ou uma INSTÂNCIA a partir da classe Filme
 $filme1 = new Filme();
 
+$filme2 = new Filme();
+
+$filme3 = new Filme();
+
 echo "<pre>";
-var_dump($filme1);
+var_dump($filme1, $filme2, $filme3);
 echo "</pre>";
 ?>
 <!DOCTYPE html>
