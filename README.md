@@ -9,6 +9,10 @@ Os assuntos e exemplos estão divididos por `branches`, acessíveis pelo menu de
 
 ---
 
+## Branch 02: Visibilidade e Encapsulamento
+
+---
+
 ## Branch 01: Classes, Objetos, Propriedades, Métodos
 
 - Classes e Objetos
