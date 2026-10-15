@@ -11,6 +11,11 @@ Os assuntos e exemplos estão divididos por `branches`, acessíveis pelo menu de
 
 ## Branch 02: Visibilidade e Encapsulamento
 
+- Visibilidade de propriedades: <b>public</b> e <b>private</b>
+- Encapsulamento
+- Métodos <b>Getters</b> para leitura
+- Métodos <b>Setters</b> para escrita
+
 ---
 
 ## Branch 01: Classes, Objetos, Propriedades, Métodos
