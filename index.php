@@ -5,26 +5,26 @@ require_once "src/Filme.php";
 // Criando um OBJETO ou uma INSTÂNCIA a partir da classe Filme
 $filme1 = new Filme();
 
-// Atribuir valores ás propriedades do objeto
+// Utilizando os setters para colocar dados em cada objeto
 /* operador de objeto ' -> '  ("equivalente" ao ponto no JS)*/
-$filme1->titulo = "De Volta Para o Futuro";
-$filme1->ano = 1984;
-$filme1->genero = "Ficção Científica";
+$filme1->setTitulo("De Volta Para o Futuro");
+$filme1->setAno(1984);
+$filme1->setGenero("Ficção Científica");
 
 $filme2 = new Filme();
-$filme2->titulo = "Toy Story";
-$filme2->ano = 1995;
-$filme2->genero = "Animação";
+$filme2->setTitulo("Toy Story");
+$filme2->setAno(1995);
+$filme2->setGenero("Animação");
 
 $filme3 = new Filme();
-$filme3->titulo = "O Auto da Compadecida";
-$filme3->ano = 2000;
-$filme3->genero = "Comédia";
+$filme3->setTitulo("O Auto da Compadecida");
+$filme3->setAno(2000);
+$filme3->setGenero("Comédia");
 
 $filme4 = new Filme();
-$filme4->titulo = "Matrix";
-$filme4->ano = 1999;
-$filme4->genero = "Ficção Científica";
+$filme4->setTitulo("Matrix");
+$filme4->setAno(1999);
+$filme4->setGenero("Ficção Científica");
 
 /* echo "<pre>";
 var_dump($filme1, $filme2, $filme3, $filme4);
@@ -53,9 +53,9 @@ $filmes = [$filme1, $filme2, $filme3, $filme4];
         <div class="filmes">
         <?php foreach($filmes as $filme): ?>
             <article class="card-filme">
-               <span class="genero"> <?= $filme->genero ?> </span>
-               <h2> <?= $filme->titulo ?> </h2>
-               <p class="ano">Lançamento: <?= $filme->ano ?> </p>
+               <span class="genero"> <?= $filme->getGenero() ?> </span>
+               <h2> <?= $filme->getTitulo() ?> </h2>
+               <p class="ano">Lançamento: <?= $filme->getAno() ?> </p>
 
                <?php if( $filme->ehClassico() ): ?>
                 <span class="classico">Clássico</span>
@@ -69,10 +69,10 @@ $filmes = [$filme1, $filme2, $filme3, $filme4];
         <div class="assuntos-estudados">
             <h2>Assuntos estudados</h2>
             <ul>
-                <li>Classes e Objetos</li>
-                <li>Propriedades e métodos</li>
-                <li>Tipos de dados</li>
-                <li>Uso do <b><code>$this</code></b> para acessar recursos de dentro da própria classe</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
         </div>
 
