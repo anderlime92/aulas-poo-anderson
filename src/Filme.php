@@ -12,8 +12,6 @@ class Filme
         return $this->ano < 2000;
     }
 
-    /* Métodos getters: permitem ACESSO/LEITURA (ler dados) */
-    /* Getters só retornam os dados de cada propriedade. */
     public function getTitulo(): string
     {
         return $this->titulo;
@@ -29,8 +27,6 @@ class Filme
         return $this->ano;
     }
 
-    /* Métodos setters: permitem ACESSO/ESCRITA (colocar dados) */
-    /* Setters recebem através de parametros os dados à serem colocados nas propriedades */
     public function setTitulo(string $titulo): void
     {
         $this->titulo = $titulo;
@@ -43,7 +39,6 @@ class Filme
 
     public function setAno(int $ano): void
     {
-        // Podemos usar os setters para validações/verificações
         if ($ano > 0) {
             $this->ano = $ano;
         }
