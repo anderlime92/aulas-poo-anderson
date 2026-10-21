@@ -6,9 +6,8 @@ class Conteudo
     private string $titulo;
     private string $genero;
     private int $ano;
-}
 
-public function __construct(string $titulo, string $genero, int $ano)
+    public function __construct(string $titulo, string $genero, int $ano)
     {
         // Atribuindo os valores recebidos pelos parâmetros às propriedades
         $this->titulo = $titulo;
@@ -54,3 +53,4 @@ public function __construct(string $titulo, string $genero, int $ano)
             $this->ano = $ano;
         }
     }
+}
