@@ -54,12 +54,12 @@ $filmes = [$filme1, $filme2, $filme3, $filme4];
         <div class="assuntos-estudados">
             <h2>Assuntos estudados</h2>
             <ul>
-                <li>Finalidade do construtor</li>
-                <li>Implementação do método <b>_construct</b></li>
-                <li>Parâmetros/argumentos do construtor</li>
-                <li>passagem de dados/valores ao criar objetos</li>
-                <li>Atribuição de valores para as propriedades usando o construtor</li>
-                <li>Uso do <b>setter</b> a partir do construtor</li>
+                <li></li>
+                <li><b></b></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li><b></b></li>
             </ul>
         </div>
 
