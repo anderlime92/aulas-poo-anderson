@@ -25,9 +25,9 @@ $serie2 = new Serie('Dark', 'ficção', 2017, 3);
 var_dump($filme1, $filme2, $filme3, $filme4);
 echo "</pre>"; */
 
-echo "<pre>";
+/* echo "<pre>";
 var_dump($serie1, $serie2);
-echo "</pre>";
+echo "</pre>"; */
 
 $series = [$serie1, $serie2];
 
@@ -73,6 +73,7 @@ $filmes = [$filme1, $filme2, $filme3, $filme4];
                <span class="genero"> <?= $serie->getGenero() ?> </span>
                <h2> <?= $serie->getTitulo() ?> </h2>
                <p class="ano">Lançamento: <?= $serie->getAno() ?> </p>
+               <p class="temporada">Temporadas: <?= $serie->getTemporada() ?> </p>
 
                <?php if( $serie->ehClassico() ): ?>
                 <span class="classico">Clássico</span>
