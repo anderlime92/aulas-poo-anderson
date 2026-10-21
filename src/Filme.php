@@ -4,8 +4,16 @@
 // Filme é uma subclasse que HERDA da superclasse Conteudo
 class Filme extends Conteudo
 {
+    // Propriedade específica da classe Filme
+    private int $duracao;
 
+    /* Método construtor específico da subclasse Filme responsável por receber os valores no momento da criação de objeto Filme (incluindo a duração) */
+    public function __construct(string $titulo, string $genero, int $ano, int $duracao)
+    {
+        /* Chamamos o construtor da superclasse (classe pai) usando parent::__construct(). Isso é necessário pois estes valores pertencem às propriedades da classe pai. */
+        parent::__construct($titulo, $genero, $ano)
 
-    /* Método CONSTRUTOR: a finalidade deste método é receber dados (através dos parâmetros) no momento da criação do objeto e atribuí-los às propriedades. Estemétodo NÃO POSSUI retorno. */
-    /* .... _construct"(string $KKKK, string $vatapa)" => parâmetros */
+        // Já quanto à duração, fazemos a atribuição aqui mesmo (afinal, $duracao é de Filme)
+        $this->duracao = $duracao;
+    }
 }
