@@ -33,6 +33,7 @@ class Serie extends Conteudo
     // 4) (na index.php) Crie dois objetos do tipo Serie
     // 5) (na index.php) Mostre estes dois objetos usando var_dump
 
+    // Implementação obrigatória do método getDescrição em Serie
     public function getDescricao(): string
     {
         return "A série $this->titulo possui $this->temporada temporadas.";

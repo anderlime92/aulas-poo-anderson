@@ -29,13 +29,12 @@ echo "</pre>"; */
 var_dump($serie1, $serie2);
 echo "</pre>"; */
 
-$series = [$serie1, $serie2];
-
-$filmes = [$filme1, $filme2, $filme3, $filme4];
-
 /* Como a classe Conteudo foi definida como abstrata, a linha abaixo não funcionará pois não é possível criar objetos/instâncias diretamente à partir de classes abstratas. */
 // $conteudo = new Conteudo('Senhor dos anéis', 'Fantasia', 2001);
 // var_dump($conteudo);
+
+// Lista com objetos Filme e Serie
+$conteudos = [$filme1, $filme2, $serie1, $serie2];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -55,40 +54,26 @@ $filmes = [$filme1, $filme2, $filme3, $filme4];
             <p>Três filmes para descobrir, rever e se divertir</p>
         </header>
 
-        <div class="filmes">
-        <?php foreach($filmes as $filme): ?>
-            <article class="card-filme">
-               <span class="genero"> <?= $filme->getGenero() ?> </span>
-               <h2> <?= $filme->getTitulo() ?> </h2>
-               <p class="ano">Lançamento: <?= $filme->getAno() ?> </p>
+        <div class="conteudos">
+            <?php foreach ($conteudos as $conteudo): ?>
+                <article class="card-conteudo">
+                    <span class="genero"> <?= $conteudo->getGenero() ?> </span>
+                    <h2> <?= $conteudo->getTitulo() ?> </h2>
 
-               <p> <?= $filme->getDescricao() ?> </p>
+                    <p class="ano">Lançamento: <?= $conteudo->getAno() ?> </p>
 
-               <?php if( $filme->ehClassico() ): ?>
-                <span class="classico">Clássico</span>
-               <?php endif; ?>
-            </article>
-        <?php endforeach; ?>
+                    <!-- POLIMORFISMO: a mesma chamada (getDescrição) de método, mas usando implementações diferentes -->
+                    <p> <?= $conteudo->getDescricao() ?> </p>
+
+                    <?php if ($conteudo->ehClassico()): ?>
+                        <span class="classico">Clássico</span>
+
+                    <?php endif; ?>
+                </article>
+            <?php endforeach; ?>
         </div>
 
         <hr>
-
-        <div class="series">
-        <?php foreach($series as $serie): ?>
-            <article class="card-serie">
-               <span class="genero"> <?= $serie->getGenero() ?> </span>
-               <h2> <?= $serie->getTitulo() ?> </h2>
-               <p class="ano">Lançamento: <?= $serie->getAno() ?> </p>
-               <p class="temporada">Temporadas: <?= $serie->getTemporada() ?> </p>
-
-               <p> <?= $serie->getDescricao() ?> </p>
-
-               <?php if( $serie->ehClassico() ): ?>
-                <span class="classico">Clássico</span>
-               <?php endif; ?>
-            </article>
-        <?php endforeach; ?>
-        </div>
 
         <hr>
 
