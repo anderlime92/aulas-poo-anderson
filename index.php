@@ -32,6 +32,10 @@ echo "</pre>"; */
 $series = [$serie1, $serie2];
 
 $filmes = [$filme1, $filme2, $filme3, $filme4];
+
+/* Como a classe Conteudo foi definida como abstrata, a linha abaixo não funcionará pois não é possível criar objetos/instâncias diretamente à partir de classes abstratas. */
+// $conteudo = new Conteudo('Senhor dos anéis', 'Fantasia', 2001);
+// var_dump($conteudo);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

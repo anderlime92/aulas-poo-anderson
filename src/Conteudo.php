@@ -1,7 +1,7 @@
 <?php
 // src/Conteudo.php
 
-class Conteudo
+abstract class Conteudo
 {
     /* Visibilidade protected:
     Fica visível na própria superclasse (pai) em que foi declarada (Conteudo) e também para as subclasses (filha) Serie e Filme */
