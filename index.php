@@ -1,10 +1,23 @@
 <?php
+require_once "src/StatusPedido.php"; // a Enumeração DEVE vir primeiro
+require_once "src/Pedido.php"; // pois a classe Pedido precisa dela
+
 require_once "src/Notificador.php";
 require_once "src/NotificadorEmail.php";
 require_once "src/NotificadorSMS.php";
 
 $notificadorPorEmail = new NotificadorEmail();
 $notificadorPorSMS = new NotificadorSMS();
+
+$pedido1 = new Pedido(1001, "Fulano da Silva", StatusPedido::Pendente);
+$pedido2 = new Pedido(1002, "Beltrano Souza", StatusPedido::Pendente);
+$pedido3 = new Pedido(1003, "José da Silva", StatusPedido::AguardandoPagamento);
+$pedido4 = new Pedido(1004, "Mônica Santos", StatusPedido::SaiuParaEntrega);
+
+// Alterando o status de acordo com as opções válidas da Enum
+$pedido3->setStatus(StatusPedido::Pago);
+
+$pedidos = [$pedido1, $pedido2, $pedido3, $pedido4];
 
 ?>
 <!DOCTYPE html>
@@ -22,16 +35,25 @@ $notificadorPorSMS = new NotificadorSMS();
         <header>
             <p class="destaque">Loja Virtual</p>
             <h1>Pedidos da loja virtual</h1>
-            <p>Cada pedido possui um status: Pendente, Aguardando pagamento, </p>
+            <p>Cada pedido possui um status: Pendente, Aguardando pagamento, Em preparação, Pago ou Saiu para Entrega</p>
         </header>
 
         <div class="conteudos">
+            <?php foreach($pedidos as $pedido): ?>
             <article class="card-conteudo">
-                <h2></h2>
-                <p></p>
-                <p></p>
-            </article>
+                <h2>Pedido #<?= $pedido->getNumero() ?> </h2>
+                <p>Cliente: <?= $pedido->getCliente() ?> </p>
+                <p>Status:
+                    <b class="destaque"> <?= $pedido->getStatus()->value ?> </b>
+                </p>
 
+        <?php 
+        $mensagem = 'Seu pedido #'.$pedido->getNumero().' está com o status: '.
+        $pedido->getStatus()->value;
+        ?>   
+            <p><small> <?= $notificadorPorEmail->enviar($mensagem) ?></small></p> 
+            </article>
+            <?php endforeach; ?>
             <hr>
 
         </div>
