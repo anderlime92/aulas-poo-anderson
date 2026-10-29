@@ -9,42 +9,44 @@ class Pedido
     private StatusPedido $status;
 
     public function __construct(
-        int $numero, string $cliente, StatusPedido $status
-    )
-    {
+        int $numero,
+        string $cliente,
+        StatusPedido $status
+    ) {
         $this->numero = $numero;
         $this->cliente = $cliente;
         $this->status = $status;
     }
     /* Programe os getters e setters para as 3 propriedades da classe */
-}
 
-public function getNumero(): int
-{
-    return $this->numero;
-}
 
-public function getCliente(): string
-{
-    return $this->cliente;
-}
+    public function getNumero(): int
+    {
+        return $this->numero;
+    }
 
-public function getStatus(): StatusPedido
-{
-    return $this->status;
-}
+    public function getCliente(): string
+    {
+        return $this->cliente;
+    }
 
-public function setNumero(int $numero): void
-{
-    $this->numero = $numero;
-}
+    public function getStatus(): StatusPedido
+    {
+        return $this->status;
+    }
 
-public function setCliente(string $cliente): void
-{
-    $this->cliente;
-}
+    public function setNumero(int $numero): void
+    {
+        $this->numero = $numero;
+    }
 
-public function setStatus(StatusPedido $status): void
-{
-    $this->status;
+    public function setCliente(string $cliente): void
+    {
+        $this->cliente;
+    }
+
+    public function setStatus(StatusPedido $status): void
+    {
+        $this->status;
+    }
 }
