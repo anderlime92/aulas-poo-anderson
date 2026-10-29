@@ -1,40 +1,13 @@
-<?php
-// Importando a superclasse/pai: Conteudo
-require_once "src/Conteudo.php";
+<?php 
+require_once "src/Notificador.php"; // interface (vem primeiro)
+require_once "src/NotificadorEmail.php"; // classe
+require_once "src/NotificadorSMS.php"; // classe
 
-// Importando a subclasse/filha: Filme (que herda de Conteudo)
-require_once "src/Filme.php";
+// Criando os objetos a partir das classes
+$notificadorPorEmail = new NotificadorEmail();
+$notificadorPorSMS = new NotificadorSMS();
 
-// Importando a subclasse/filha: Serie (que herda de Conteudo)
-require_once "src/Serie.php";
-
-// Criando os objetos e passando os dados para o construtor
-$filme1 = new Filme('De Volta para o Futuro', 'Ficção', 1985, 114);
-
-$filme2 = new Filme('Toy Story', 'Animação', 1995, 96);
-
-$filme3 = new Filme('Homem Aranha 2', 'Ação', 2006, 220);
-
-$filme4 = new Filme('Matrix', 'ficção', 1999, 160);
-
-$serie1 = new Serie('Twin Peaks', 'ficção', 1990, 3);
-
-$serie2 = new Serie('Dark', 'ficção', 2017, 3);
-
-/* echo "<pre>";
-var_dump($filme1, $filme2, $filme3, $filme4);
-echo "</pre>"; */
-
-/* echo "<pre>";
-var_dump($serie1, $serie2);
-echo "</pre>"; */
-
-/* Como a classe Conteudo foi definida como abstrata, a linha abaixo não funcionará pois não é possível criar objetos/instâncias diretamente à partir de classes abstratas. */
-// $conteudo = new Conteudo('Senhor dos anéis', 'Fantasia', 2001);
-// var_dump($conteudo);
-
-// Lista com objetos Filme e Serie
-$conteudos = [$filme1, $filme2, $serie1, $serie2];
+$notificadores = [$notificadorPorEmail, $notificadorPorSMS];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,51 +15,44 @@ $conteudos = [$filme1, $filme2, $serie1, $serie2];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Coleção de Filmes</title>
+    <title>Notificações da loja virtual</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <p class="destaque">Uma sessão de boas histórias</p>
-            <h1>Minha coleção de filmes</h1>
-            <p>Três filmes para descobrir, rever e se divertir</p>
+            <p class="destaque">Loja Virtual</p>
+            <h1>Notificações da loja virtual</h1>
+            <p>Simulação de notificações sobre pedidos por e-mail e SMS</p>
         </header>
 
-        <div class="conteudos">
-            <?php foreach ($conteudos as $conteudo): ?>
-                <article class="card-conteudo">
-                    <span class="genero"> <?= $conteudo->getGenero() ?> </span>
-                    <h2> <?= $conteudo->getTitulo() ?> </h2>
+        <div class="conteudos">        
+        
+        <?php 
+            $conteudoDaMensagem = "Seu pedido '123abc' foi confirmado!";
+            foreach($notificadores as $notificador): 
+        ?>
+            <article class="card-conteudo">
+                <h2>Notificação sobre o pedido:</h2>
+                <p> <?= $notificador->enviar($conteudoDaMensagem) ?> </p>
+            </article>
+        <?php endforeach; ?>
 
-                    <p class="ano">Lançamento: <?= $conteudo->getAno() ?> </p>
-
-                    <!-- POLIMORFISMO: a mesma chamada (getDescrição) de método, mas usando implementações diferentes -->
-                    <p> <?= $conteudo->getDescricao() ?> </p>
-
-                    <?php if ($conteudo->ehClassico()): ?>
-                        <span class="classico">Clássico</span>
-
-                    <?php endif; ?>
-                </article>
-            <?php endforeach; ?>
         </div>
 
-        <hr>
+        <hr>        
 
-        <hr>
-
-        <div class="assuntos-estudados">
-            <h2>Assuntos estudados</h2>
-            <ul>
-                <li>Classe abstrata: <b>Conteudo</b></li>
-                <li>Impossibilidade de instanciar diretamente uma classe abstrata</li>
-                <li>Método abstrato: <b>getDescricao()</b></li>
-                <li>Obriga a implementação do método abstrato pelas classes filhas Filme e Serie</li>
-                <li>Polimorfismo: a mesma chamada a <b>getDescricao()</b> utiliza a implementação de cada classe</li>
-            </ul>
-        </div>
+    <div class="assuntos-estudados">
+        <h2>Assuntos estudados</h2>
+        <ul>
+            <li>Interface <b>Notificador</b> como um contrato de comportamentos (métodos)</li>
+            <li>Definição do método <b>enviar(string $mensagem): string</b> na Interface</li>
+            <li>Aplicação da interface com <b>implements</b> nas classes <b>NotificadorEmail</b> e <b>NotificadorSMS</b></li>
+            <li>Implementação do método <b>enviar</b> em cada classe</li>
+            <li>Polimorfismo: a mesma chamada a <b>enviar</b> utiliza a implementação de cada classe.</li>
+        </ul>
+    </div>
 
     </div>
 </body>
