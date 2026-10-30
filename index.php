@@ -4,6 +4,7 @@ use App\Pedidos\Pedido;
 // Repare que aqui definimos um apelido (as) para solucionar o conflito de nomes da classe
 use App\Relatorios\Pedido as RelatorioPedido; 
 use App\Pedidos\StatusPedido;
+use App\Saudacao;
 
 /* Substituimos TODOS os requires manuais de cada arquivo (classe, interface, enum) por UM ÚNICO require apontando para o autoload. */
 require_once "vendor/autoload.php";
@@ -30,6 +31,7 @@ $pedidos = [$pedido1, $pedido2, $pedido3, $pedido4];
 $relatorioPedido1 = new RelatorioPedido(); // repare que usamos o apelido em vez do nome real
 $relatorioPedido2 = new App\Relatorios\Pedido(); // também é válido usando nome completo
 /* var_dump($relatorioPedido1, $relatorioPedido2); */
+$saudacao = new Saudacao();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -47,6 +49,7 @@ $relatorioPedido2 = new App\Relatorios\Pedido(); // também é válido usando no
             <p class="destaque">Loja Virtual</p>
             <h1>Pedidos da loja virtual</h1>
             <p>Cada pedido possui um status: Pendente, Aguardando pagamento, Em preparação, Pago ou Saiu para Entrega</p>
+            <p>Testando a saudação: <?= $saudacao->cumprimentar() ?></p>
         </header>
 
         <div class="conteudos">
