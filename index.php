@@ -1,14 +1,21 @@
 <?php
-require_once "src/StatusPedido.php"; // a Enumeração DEVE vir primeiro
-require_once "src/Pedido.php"; // pois a classe Pedido precisa dela
+/* Nesta segunda forma, basta indicar o uso do recurso através do namespace */
+use App\Pedidos\Pedido;
+use App\Pedidos\StatusPedido;
 
-require_once "src/Notificador.php";
-require_once "src/NotificadorEmail.php";
-require_once "src/NotificadorSMS.php";
+// Atualizamos os caminhos físicos (pasta/arquivo.php)
+require_once "src/Pedidos/StatusPedido.php"; // a Enumeração DEVE vir primeiro
+require_once "src/Pedidos/Pedido.php"; // pois a classe Pedido precisa dela
 
-$notificadorPorEmail = new NotificadorEmail();
-$notificadorPorSMS = new NotificadorSMS();
+require_once "src/Notificacoes/Notificador.php";
+require_once "src/Notificacoes/NotificadorEmail.php";
+require_once "src/Notificacoes/NotificadorSMS.php";
 
+// Veja que nessa primeira forma, precisamos passar o nome completo da classe
+$notificadorPorEmail = new App\Notificacoes\NotificadorEmail();
+$notificadorPorSMS = new App\Notificacoes\NotificadorSMS();
+
+/* Repare no terceiro parametro: é OBRIGATORIO usar uma das opções definidas na Enum. */
 $pedido1 = new Pedido(1001, "Fulano da Silva", StatusPedido::Pendente);
 $pedido2 = new Pedido(1002, "Beltrano Souza", StatusPedido::Pendente);
 $pedido3 = new Pedido(1003, "José da Silva", StatusPedido::AguardandoPagamento);
