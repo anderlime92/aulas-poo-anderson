@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Notificaçoes;
+
 class NotificadorSMS implements Notificador
 {
     private static int $quantidadeEnviada = 0;

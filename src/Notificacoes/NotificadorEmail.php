@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Notificaçoes;
+
 class NotificadorEmail implements Notificador
 {
     // Contador de envios
